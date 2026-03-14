@@ -1,0 +1,22 @@
+{
+  "monthlyRevenue": [
+    { "month": "Oct", "revenue": 28400 },
+    { "month": "Nov", "revenue": 35200 },
+    { "month": "Dec", "revenue": 52100 },
+    { "month": "Jan", "revenue": 31500 },
+    { "month": "Feb", "revenue": 40800 },
+    { "month": "Mar", "revenue": 48250 }
+  ],
+  "topProducts": [
+    { "name": "Mechanical Keyboard TKL", "units": 55, "revenue": 7149.45 },
+    { "name": "Wireless Headphones", "units": 34, "revenue": 3059.66 },
+    { "name": "Gaming Mouse 12K DPI", "units": 48, "revenue": 2879.52 },
+    { "name": "Bluetooth Speaker", "units": 29, "revenue": 2029.71 },
+    { "name": "USB-C Hub 7-Port", "units": 21, "revenue": 945.00 }
+  ],
+  "channelBreakdown": [
+    { "channel": "eBay", "percentage": 45 },
+    { "channel": "Amazon", "percentage": 35 },
+    { "channel": "Direct", "percentage": 20 }
+  ]
+}

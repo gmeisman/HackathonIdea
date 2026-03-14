@@ -1,0 +1,10 @@
+[
+  { "id": "ORD-001", "customer": "Alice Johnson", "product": "Wireless Headphones", "amount": 89.99, "status": "shipped", "date": "2026-03-14", "channel": "eBay" },
+  { "id": "ORD-002", "customer": "Bob Martinez", "product": "USB-C Hub 7-Port", "amount": 45.00, "status": "processing", "date": "2026-03-14", "channel": "Amazon" },
+  { "id": "ORD-003", "customer": "Carol White", "product": "Mechanical Keyboard TKL", "amount": 129.99, "status": "delivered", "date": "2026-03-13", "channel": "eBay" },
+  { "id": "ORD-004", "customer": "David Lee", "product": "Gaming Mouse 12K DPI", "amount": 59.99, "status": "shipped", "date": "2026-03-13", "channel": "Amazon" },
+  { "id": "ORD-005", "customer": "Eva Brown", "product": "Monitor Stand Adjustable", "amount": 34.99, "status": "processing", "date": "2026-03-12", "channel": "Direct" },
+  { "id": "ORD-006", "customer": "Frank Davis", "product": "Bluetooth Speaker", "amount": 69.99, "status": "delivered", "date": "2026-03-12", "channel": "eBay" },
+  { "id": "ORD-007", "customer": "Grace Wilson", "product": "1080p Webcam", "amount": 55.00, "status": "cancelled", "date": "2026-03-11", "channel": "Amazon" },
+  { "id": "ORD-008", "customer": "Henry Taylor", "product": "Phone Charging Cable 3-Pack", "amount": 12.99, "status": "delivered", "date": "2026-03-11", "channel": "Direct" }
+]

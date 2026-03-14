@@ -1,0 +1,103 @@
+[
+  {
+    "id": "AUD-010",
+    "timestamp": "2026-03-14T09:15:00Z",
+    "actionType": "reorder",
+    "item": "USB-C Hub 7-Port",
+    "sku": "UC-001",
+    "amount": 1850,
+    "reasoning": "Stock fell to 4 units, below reorder threshold of 15. Ordering 100 units at $18.50 each to restore safety stock.",
+    "status": "auto-executed"
+  },
+  {
+    "id": "AUD-009",
+    "timestamp": "2026-03-14T08:45:00Z",
+    "actionType": "listing-post",
+    "item": "Mechanical Keyboard TKL",
+    "sku": "KB-001",
+    "amount": 0,
+    "reasoning": "High sell-through rate (55 units/30d). AI recommended cross-posting to Amazon to increase revenue by an estimated 22%.",
+    "status": "approved"
+  },
+  {
+    "id": "AUD-008",
+    "timestamp": "2026-03-14T07:30:00Z",
+    "actionType": "support-reply",
+    "item": "TKT-002 (Bob Martinez)",
+    "sku": null,
+    "amount": 0,
+    "reasoning": "Urgent ticket: wrong item received. AI drafted a priority apology with replacement offer and prepaid return label.",
+    "status": "rejected"
+  },
+  {
+    "id": "AUD-007",
+    "timestamp": "2026-03-13T16:20:00Z",
+    "actionType": "price-update",
+    "item": "Monitor Stand Adjustable",
+    "sku": "MS-001",
+    "amount": -5,
+    "reasoning": "Low sales velocity (12 units/30d vs category avg 28). AI suggested 14% price reduction from $34.99 to $29.99 to stimulate demand.",
+    "status": "rejected"
+  },
+  {
+    "id": "AUD-006",
+    "timestamp": "2026-03-13T14:10:00Z",
+    "actionType": "reorder",
+    "item": "1080p Webcam",
+    "sku": "WC-001",
+    "amount": 880,
+    "reasoning": "Stock at 2 units, critically below reorder threshold of 8. Ordering 40 units at $22.00 each. High demand spike detected this week.",
+    "status": "auto-executed"
+  },
+  {
+    "id": "AUD-005",
+    "timestamp": "2026-03-13T11:05:00Z",
+    "actionType": "support-reply",
+    "item": "TKT-001 (Alice Johnson)",
+    "sku": null,
+    "amount": 0,
+    "reasoning": "Customer frustrated about Bluetooth pairing issue. AI drafted step-by-step troubleshooting guide with escalation offer if unresolved.",
+    "status": "auto-executed"
+  },
+  {
+    "id": "AUD-004",
+    "timestamp": "2026-03-13T09:00:00Z",
+    "actionType": "listing-post",
+    "item": "Gaming Mouse 12K DPI",
+    "sku": "GM-001",
+    "amount": 0,
+    "reasoning": "eBay listing expired after 30-day cycle. AI automatically re-listed with refreshed title, updated keywords, and competitive pricing.",
+    "status": "auto-executed"
+  },
+  {
+    "id": "AUD-003",
+    "timestamp": "2026-03-12T15:45:00Z",
+    "actionType": "price-update",
+    "item": "Wireless Headphones",
+    "sku": "WH-001",
+    "amount": 5,
+    "reasoning": "Competitor analysis: top 3 similar products average $94.99. AI recommended 5.5% price increase from $89.99 to $94.99 with no predicted demand impact.",
+    "status": "approved"
+  },
+  {
+    "id": "AUD-002",
+    "timestamp": "2026-03-12T13:30:00Z",
+    "actionType": "reorder",
+    "item": "Monitor Stand Adjustable",
+    "sku": "MS-001",
+    "amount": 350,
+    "reasoning": "Stock at 7 units, below reorder threshold of 10. Ordering 25 units at $14.00 each. Lead time is 5 days.",
+    "status": "auto-executed"
+  },
+  {
+    "id": "AUD-001",
+    "timestamp": "2026-03-11T10:00:00Z",
+    "actionType": "listing-post",
+    "item": "USB-C Hub 7-Port",
+    "sku": "UC-001",
+    "amount": 0,
+    "reasoning": "Amazon listing had been inactive for 7 days. AI drafted new listing with updated SEO keywords and product description.",
+    "status": "failed",
+    "error": "Amazon API rate limit exceeded. Retry scheduled for next hour."
+  }
+]

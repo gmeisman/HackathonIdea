@@ -1,0 +1,10 @@
+[
+  { "id": 1, "sku": "WH-001", "name": "Wireless Headphones", "category": "Audio", "stock": 23, "reorderPoint": 10, "reorderQty": 50, "unitCost": 42.00, "sellPrice": 89.99 },
+  { "id": 2, "sku": "UC-001", "name": "USB-C Hub 7-Port", "category": "Accessories", "stock": 4, "reorderPoint": 15, "reorderQty": 100, "unitCost": 18.50, "sellPrice": 45.00 },
+  { "id": 3, "sku": "KB-001", "name": "Mechanical Keyboard TKL", "category": "Peripherals", "stock": 12, "reorderPoint": 8, "reorderQty": 30, "unitCost": 65.00, "sellPrice": 129.99 },
+  { "id": 4, "sku": "GM-001", "name": "Gaming Mouse 12K DPI", "category": "Peripherals", "stock": 31, "reorderPoint": 10, "reorderQty": 50, "unitCost": 25.00, "sellPrice": 59.99 },
+  { "id": 5, "sku": "MS-001", "name": "Monitor Stand Adjustable", "category": "Furniture", "stock": 7, "reorderPoint": 10, "reorderQty": 25, "unitCost": 14.00, "sellPrice": 34.99 },
+  { "id": 6, "sku": "WC-001", "name": "1080p Webcam", "category": "Video", "stock": 2, "reorderPoint": 8, "reorderQty": 40, "unitCost": 22.00, "sellPrice": 55.00 },
+  { "id": 7, "sku": "SB-001", "name": "Bluetooth Speaker", "category": "Audio", "stock": 18, "reorderPoint": 10, "reorderQty": 30, "unitCost": 28.00, "sellPrice": 69.99 },
+  { "id": 8, "sku": "CC-001", "name": "Phone Charging Cable 3-Pack", "category": "Accessories", "stock": 145, "reorderPoint": 50, "reorderQty": 200, "unitCost": 3.50, "sellPrice": 12.99 }
+]

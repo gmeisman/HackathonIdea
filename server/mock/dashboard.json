@@ -1,0 +1,35 @@
+{
+  "kpis": {
+    "totalRevenue": 48250,
+    "revenueChange": 12.4,
+    "totalOrders": 342,
+    "ordersChange": 8.1,
+    "activeListings": 87,
+    "listingsChange": 3.5,
+    "openTickets": 14,
+    "ticketsChange": -22.0
+  },
+  "trends": {
+    "revenue":  [28400, 35200, 52100, 31500, 40800, 48250],
+    "orders":   [289, 312, 401, 298, 317, 342],
+    "listings": [72, 78, 85, 80, 83, 87],
+    "tickets":  [22, 18, 25, 20, 18, 14]
+  },
+  "recentActivity": [
+    { "id": "ORD-001", "product": "Wireless Headphones",    "amount": 89.99,  "status": "shipped",    "date": "2026-03-14", "channel": "eBay" },
+    { "id": "ORD-002", "product": "USB-C Hub",              "amount": 45.00,  "status": "processing", "date": "2026-03-14", "channel": "Amazon" },
+    { "id": "ORD-003", "product": "Mechanical Keyboard",    "amount": 129.99, "status": "delivered",  "date": "2026-03-13", "channel": "eBay" },
+    { "id": "ORD-004", "product": "Gaming Mouse",           "amount": 59.99,  "status": "shipped",    "date": "2026-03-13", "channel": "Amazon" },
+    { "id": "ORD-005", "product": "Monitor Stand",          "amount": 34.99,  "status": "processing", "date": "2026-03-12", "channel": "Direct" },
+    { "id": "ORD-006", "product": "Bluetooth Speaker",      "amount": 69.99,  "status": "delivered",  "date": "2026-03-11", "channel": "eBay" },
+    { "id": "ORD-007", "product": "1080p Webcam",           "amount": 55.00,  "status": "shipped",    "date": "2026-03-10", "channel": "Amazon" },
+    { "id": "ORD-008", "product": "Charging Cable 3-Pack",  "amount": 12.99,  "status": "delivered",  "date": "2026-03-09", "channel": "Direct" },
+    { "id": "ORD-009", "product": "Wireless Headphones",    "amount": 89.99,  "status": "delivered",  "date": "2026-03-07", "channel": "Amazon" },
+    { "id": "ORD-010", "product": "Gaming Mouse",           "amount": 59.99,  "status": "delivered",  "date": "2026-03-05", "channel": "eBay" },
+    { "id": "ORD-011", "product": "Mechanical Keyboard",    "amount": 129.99, "status": "delivered",  "date": "2026-03-02", "channel": "Direct" },
+    { "id": "ORD-012", "product": "USB-C Hub",              "amount": 45.00,  "status": "delivered",  "date": "2026-02-28", "channel": "Amazon" },
+    { "id": "ORD-013", "product": "Bluetooth Speaker",      "amount": 69.99,  "status": "delivered",  "date": "2026-02-25", "channel": "eBay" },
+    { "id": "ORD-014", "product": "1080p Webcam",           "amount": 55.00,  "status": "delivered",  "date": "2026-02-20", "channel": "Amazon" },
+    { "id": "ORD-015", "product": "Monitor Stand",          "amount": 34.99,  "status": "delivered",  "date": "2026-02-15", "channel": "Direct" }
+  ]
+}

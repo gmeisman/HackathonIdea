@@ -1,0 +1,15 @@
+{
+  "autonomyMode": "semi-auto",
+  "autoApproveThreshold": 50,
+  "maxSingleOrderValue": 500,
+  "reorderTrigger": 10,
+  "categoryOverrides": {
+    "Audio": "semi-auto",
+    "Accessories": "full-auto",
+    "Peripherals": "semi-auto",
+    "Video": "manual",
+    "Furniture": "manual"
+  },
+  "notificationPreference": "approvals-needed",
+  "emergencyPause": false
+}

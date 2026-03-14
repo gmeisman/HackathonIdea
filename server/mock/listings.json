@@ -1,0 +1,7 @@
+[
+  { "id": 1, "sku": "WH-001", "name": "Wireless Headphones", "price": 89.99, "ebayStatus": "active", "amazonStatus": "inactive", "views": 1240, "sales30d": 34, "description": "Premium wireless headphones with 30-hour battery life and noise cancellation." },
+  { "id": 2, "sku": "UC-001", "name": "USB-C Hub 7-Port", "price": 45.00, "ebayStatus": "inactive", "amazonStatus": "active", "views": 870, "sales30d": 21, "description": "7-in-1 USB-C hub with 4K HDMI, 100W PD charging, and SD card reader." },
+  { "id": 3, "sku": "KB-001", "name": "Mechanical Keyboard TKL", "price": 129.99, "ebayStatus": "active", "amazonStatus": "active", "views": 2100, "sales30d": 55, "description": "Tenkeyless mechanical keyboard with tactile switches and RGB backlighting." },
+  { "id": 4, "sku": "GM-001", "name": "Gaming Mouse 12K DPI", "price": 59.99, "ebayStatus": "active", "amazonStatus": "inactive", "views": 1800, "sales30d": 48, "description": "Precision gaming mouse with 12,000 DPI optical sensor and 6 programmable buttons." },
+  { "id": 5, "sku": "MS-001", "name": "Monitor Stand Adjustable", "price": 34.99, "ebayStatus": "inactive", "amazonStatus": "inactive", "views": 430, "sales30d": 12, "description": "Height-adjustable monitor stand with cable management and 360° rotation." }
+]

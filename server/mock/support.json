@@ -1,0 +1,62 @@
+[
+  {
+    "id": "TKT-001",
+    "customer": "Alice Johnson",
+    "subject": "Headphones not pairing with my laptop",
+    "status": "open",
+    "priority": "high",
+    "sentiment": "frustrated",
+    "date": "2026-03-14",
+    "messages": [
+      { "from": "customer", "text": "I bought the wireless headphones yesterday and they won't connect to my laptop at all. I've tried restarting both devices. This is really frustrating!" }
+    ]
+  },
+  {
+    "id": "TKT-002",
+    "customer": "Bob Martinez",
+    "subject": "Wrong item received",
+    "status": "open",
+    "priority": "urgent",
+    "sentiment": "angry",
+    "date": "2026-03-14",
+    "messages": [
+      { "from": "customer", "text": "I ordered a USB-C Hub but received a charging cable instead. I need this for a work presentation today. Please fix this immediately!" }
+    ]
+  },
+  {
+    "id": "TKT-003",
+    "customer": "Carol White",
+    "subject": "Keyboard key feel different than described",
+    "status": "pending",
+    "priority": "medium",
+    "sentiment": "neutral",
+    "date": "2026-03-13",
+    "messages": [
+      { "from": "customer", "text": "The keyboard is okay but the tactile feel is quite different from what the listing described. Is there a return policy I should know about?" }
+    ]
+  },
+  {
+    "id": "TKT-004",
+    "customer": "Eva Brown",
+    "subject": "Quick delivery, very happy!",
+    "status": "closed",
+    "priority": "low",
+    "sentiment": "positive",
+    "date": "2026-03-12",
+    "messages": [
+      { "from": "customer", "text": "Just wanted to say the monitor stand arrived next day and it's exactly what I needed. Great product and fast shipping!" }
+    ]
+  },
+  {
+    "id": "TKT-005",
+    "customer": "Frank Davis",
+    "subject": "Speaker battery life shorter than advertised",
+    "status": "open",
+    "priority": "medium",
+    "sentiment": "disappointed",
+    "date": "2026-03-12",
+    "messages": [
+      { "from": "customer", "text": "The speaker sounds great but the battery only lasts about 4 hours, not the 10 hours advertised. This seems quite misleading." }
+    ]
+  }
+]
