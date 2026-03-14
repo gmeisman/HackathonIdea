@@ -1,5 +1,36 @@
 [
   {
+    "id": "AUD-022",
+    "timestamp": "2026-03-14T22:00:08.394Z",
+    "actionType": "support-reply",
+    "item": "TKT-001 (Alice Johnson)",
+    "sku": null,
+    "amount": 0,
+    "reasoning": "Reply posted for ticket: \"Headphones not pairing with my laptop\". Draft: \"\"I'm sorry for the trouble, Alice. Let's troubleshoot! Please try connecting your headphones via the...\"",
+    "status": "approved"
+  },
+  {
+    "id": "AUD-021",
+    "timestamp": "2026-03-14T22:00:03.905Z",
+    "actionType": "support-reply",
+    "item": "TKT-001 (Alice Johnson)",
+    "sku": null,
+    "amount": 0,
+    "reasoning": "Sil drafted reply for ticket: \"Headphones not pairing with my laptop\"",
+    "status": "auto-executed"
+  },
+  {
+    "id": "AUD-020",
+    "timestamp": "2026-03-14T21:51:26.415Z",
+    "actionType": "auto-listing-approved",
+    "item": "Bluetooth Speaker",
+    "sku": "SB-001",
+    "amount": 67.89,
+    "reasoning": "User approved Sil auto-listing for Bluetooth Speaker on eBay at $67.89.",
+    "status": "auto-executed",
+    "channel": "eBay"
+  },
+  {
     "id": "AUD-019",
     "timestamp": "2026-03-14T21:47:51.590Z",
     "actionType": "support-reply",

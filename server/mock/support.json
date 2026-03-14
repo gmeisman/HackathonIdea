@@ -3,7 +3,7 @@
     "id": "TKT-001",
     "customer": "Alice Johnson",
     "subject": "Headphones not pairing with my laptop",
-    "status": "open",
+    "status": "resolved",
     "priority": "high",
     "sentiment": "frustrated",
     "date": "2026-03-14",
@@ -12,7 +12,9 @@
         "from": "customer",
         "text": "I bought the wireless headphones yesterday and they won't connect to my laptop at all. I've tried restarting both devices. This is really frustrating!"
       }
-    ]
+    ],
+    "reply": "\"I'm sorry for the trouble, Alice. Let's troubleshoot! Please try connecting your headphones via the Bluetooth settings on your laptop, rather than relying on the initial pairing from the box. If the issue persists, please let me know your laptop's make and model so I can assist further.\"",
+    "resolvedAt": "2026-03-14T22:00:08.087Z"
   },
   {
     "id": "TKT-002",

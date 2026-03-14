@@ -46,5 +46,21 @@
     },
     "createdAt": "2026-03-13T11:00:00Z",
     "revenue": 327.6
+  },
+  {
+    "id": "AL-004",
+    "sku": "SB-001",
+    "productName": "Bluetooth Speaker",
+    "channel": "eBay",
+    "recommendedPrice": 67.89,
+    "status": "live",
+    "silReasoning": "Audio category trending up with demand score 8.7/10 (++12.4% WoW). Bluetooth Speaker has a 1.4x demand boost — Outdoor and portable speaker demand rising for spring/summer. Stock at 18 units (above reorder point of 10). eBay Audio sell-through rate: 72%. Wireless audio accessories surging ahead of spring travel season — commuters and remote workers driving steady demand.",
+    "trendData": {
+      "demandScore": 8.7,
+      "weeklyGrowth": 12.4,
+      "category": "Audio"
+    },
+    "createdAt": "2026-03-14T21:51:14.838Z",
+    "revenue": 0
   }
 ]
