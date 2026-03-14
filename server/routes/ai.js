@@ -17,8 +17,12 @@ async function callHuggingFace(prompt, context) {
     throw new Error('No HuggingFace API key configured');
   }
 
+  const HF_URL = 'https://router.huggingface.co/featherless-ai/v1/chat/completions';
+  const HF_MODEL = 'mistralai/Mistral-Nemo-Instruct-2407';
+  console.log(`[AI] HuggingFace request → URL: ${HF_URL} | model: ${HF_MODEL}`);
+
   const response = await fetch(
-    'https://router.huggingface.co/novita/v3/openai/chat/completions',
+    HF_URL,
     {
       method: 'POST',
       headers: {
@@ -26,7 +30,7 @@ async function callHuggingFace(prompt, context) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'meta-llama/Llama-3.2-3B-Instruct',
+        model: HF_MODEL,
         messages: [
           { role: 'system', content: buildSystemPrompt(context) },
           { role: 'user', content: prompt },

@@ -1,5 +1,5 @@
 {
-  "autonomyMode": "semi-auto",
+  "autonomyMode": "full-auto",
   "autoApproveThreshold": 50,
   "maxSingleOrderValue": 500,
   "reorderTrigger": 10,
@@ -11,5 +11,5 @@
     "Furniture": "manual"
   },
   "notificationPreference": "approvals-needed",
-  "emergencyPause": false
+  "emergencyPause": true
 }
