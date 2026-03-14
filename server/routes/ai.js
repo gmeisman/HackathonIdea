@@ -26,7 +26,7 @@ async function callHuggingFace(prompt, context) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'meta-llama/Meta-Llama-3-8B-Instruct',
+        model: 'meta-llama/Llama-3.2-3B-Instruct',
         messages: [
           { role: 'system', content: buildSystemPrompt(context) },
           { role: 'user', content: prompt },
@@ -52,7 +52,7 @@ async function callOllama(prompt, context) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'llama3',
+      model: 'llama3.2',
       messages: [
         { role: 'system', content: buildSystemPrompt(context) },
         { role: 'user', content: prompt },
