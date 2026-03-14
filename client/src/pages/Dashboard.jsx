@@ -3,7 +3,6 @@ import AIPanel from '../components/AIPanel.jsx'
 import FilterBar from '../components/FilterBar.jsx'
 import TasksCard from '../components/TasksCard.jsx'
 
-// Fixed reference date matching the mock data so demo filters always work
 const MOCK_TODAY = '2026-03-14'
 
 const AI_SUGGESTIONS = [
@@ -19,7 +18,7 @@ const TODAY_TASKS = [
   { id: 2, icon: '🎫', text: '3 high-priority support tickets are waiting for a reply.', tag: 'Support' },
   { id: 3, icon: '🏷️', text: 'Consider discounting Monitor Stand — only 12 units sold in 30 days.', tag: 'Pricing' },
   { id: 4, icon: '🛒', text: 'Monitor Stand and USB-C Hub have no active eBay listings.', tag: 'Listings' },
-  { id: 5, icon: '✦',  text: 'Ask AI to generate new descriptions for underperforming listings.', tag: 'AI' },
+  { id: 5, icon: '✦', text: 'Ask Sil to generate new descriptions for underperforming listings.', tag: 'Sil' },
 ]
 
 const AI_RECENT_INSIGHTS = [
@@ -59,18 +58,18 @@ function filterOrders(orders, range, channel) {
 // ─── KPI card ────────────────────────────────────────────────────────────────
 
 const STATUS_BADGES = {
-  shipped:    { pill: 'bg-blue-50 text-blue-700 border border-blue-200',    dot: 'bg-blue-400' },
-  processing: { pill: 'bg-amber-50 text-amber-700 border border-amber-200', dot: 'bg-amber-400' },
-  delivered:  { pill: 'bg-emerald-50 text-emerald-700 border border-emerald-200', dot: 'bg-emerald-400' },
-  cancelled:  { pill: 'bg-red-50 text-red-600 border border-red-200',       dot: 'bg-red-400' },
+  shipped:    { pill: 'bg-blue-50 text-blue-700 border border-blue-200',         dot: 'bg-blue-400' },
+  processing: { pill: 'bg-amber-50 text-amber-700 border border-amber-200',      dot: 'bg-amber-400' },
+  delivered:  { pill: 'bg-emerald-50 text-emerald-700 border border-emerald-200',dot: 'bg-emerald-400' },
+  cancelled:  { pill: 'bg-red-50 text-red-600 border border-red-200',            dot: 'bg-red-400' },
 }
 const STATUS_OPTIONS = ['all', 'shipped', 'processing', 'delivered', 'cancelled']
 
 const KPI_STYLES = {
-  revenue:  { iconBg: 'bg-green-100',  iconText: 'text-green-600',  border: 'border-l-green-400',  spark: '#22c55e', icon: '💵' },
-  orders:   { iconBg: 'bg-blue-100',   iconText: 'text-blue-600',   border: 'border-l-blue-400',   spark: '#3b82f6', icon: '📦' },
-  listings: { iconBg: 'bg-violet-100', iconText: 'text-violet-600', border: 'border-l-violet-400', spark: '#8b5cf6', icon: '🏷️' },
-  tickets:  { iconBg: 'bg-orange-100', iconText: 'text-orange-600', border: 'border-l-orange-400', spark: '#f97316', icon: '🎫' },
+  revenue:  { iconBg: 'bg-green-100',  iconText: 'text-green-600',  border: 'border-l-green-500',  spark: '#22c55e', icon: '💵' },
+  orders:   { iconBg: 'bg-blue-100',   iconText: 'text-blue-600',   border: 'border-l-blue-500',   spark: '#3b82f6', icon: '📦' },
+  listings: { iconBg: 'bg-violet-100', iconText: 'text-violet-600', border: 'border-l-violet-500', spark: '#8b5cf6', icon: '🏷️' },
+  tickets:  { iconBg: 'bg-red-100',    iconText: 'text-red-600',    border: 'border-l-red-500',    spark: '#ef4444', icon: '🎫' },
 }
 
 function Sparkline({ points, color }) {
@@ -78,13 +77,11 @@ function Sparkline({ points, color }) {
   const max = Math.max(...points)
   const range = max - min || 1
   const W = 80, H = 32, PAD = 2
-  const coords = points
-    .map((p, i) => {
-      const x = PAD + (i / (points.length - 1)) * (W - PAD * 2)
-      const y = PAD + (1 - (p - min) / range) * (H - PAD * 2)
-      return `${x},${y}`
-    })
-    .join(' ')
+  const coords = points.map((p, i) => {
+    const x = PAD + (i / (points.length - 1)) * (W - PAD * 2)
+    const y = PAD + (1 - (p - min) / range) * (H - PAD * 2)
+    return `${x},${y}`
+  }).join(' ')
   return (
     <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="opacity-80">
       <polyline points={coords} fill="none" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -135,9 +132,7 @@ export default function Dashboard() {
   const [statusFilter, setStatusFilter] = useState('all')
 
   useEffect(() => {
-    fetch('/api/dashboard')
-      .then((r) => r.json())
-      .then(setData)
+    fetch('/api/dashboard').then((r) => r.json()).then(setData)
   }, [])
 
   const filteredOrders = useMemo(() => {
@@ -159,16 +154,13 @@ export default function Dashboard() {
   const { kpis, trends = {} } = data
   const isFiltered = range !== 'all' || channel !== 'All'
 
-  // Revenue + Orders are derived from filtered orders when any filter is active
-  const filteredRevenue = filteredOrders.reduce((s, o) => s + o.amount, 0)
-  const baseRevenue     = data.recentActivity.reduce((s, o) => s + o.amount, 0)
-  const revenueChange   = baseRevenue > 0 ? ((filteredRevenue - baseRevenue) / baseRevenue) * 100 : 0
-
+  const filteredRevenue    = filteredOrders.reduce((s, o) => s + o.amount, 0)
+  const baseRevenue        = data.recentActivity.reduce((s, o) => s + o.amount, 0)
+  const revenueChange      = baseRevenue > 0 ? ((filteredRevenue - baseRevenue) / baseRevenue) * 100 : 0
   const filteredOrderCount = filteredOrders.length
   const baseOrderCount     = data.recentActivity.length
   const ordersChange       = baseOrderCount > 0 ? ((filteredOrderCount - baseOrderCount) / baseOrderCount) * 100 : 0
-
-  const rangeLabel = RANGE_LABELS[range]
+  const rangeLabel         = RANGE_LABELS[range]
 
   return (
     <div className="space-y-6">
@@ -176,7 +168,7 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
 
-        {/* ── Left column: filters + KPIs + orders ── */}
+        {/* ── Left column ── */}
         <div className="lg:col-span-2 space-y-6">
 
           <FilterBar
@@ -188,57 +180,44 @@ export default function Dashboard() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <KPICard
-              label="Revenue"
-              sublabel={rangeLabel}
+              label="Revenue" sublabel={rangeLabel}
               value={isFiltered ? filteredRevenue : kpis.totalRevenue}
               change={isFiltered ? revenueChange : kpis.revenueChange}
-              prefix="$"
-              styleKey="revenue"
-              trend={trends.revenue}
+              prefix="$" styleKey="revenue" trend={trends.revenue}
             />
             <KPICard
-              label="Orders"
-              sublabel={rangeLabel}
+              label="Orders" sublabel={rangeLabel}
               value={isFiltered ? filteredOrderCount : kpis.totalOrders}
               change={isFiltered ? ordersChange : kpis.ordersChange}
-              styleKey="orders"
-              trend={trends.orders}
+              styleKey="orders" trend={trends.orders}
             />
             <KPICard
-              label="Active Listings"
-              sublabel="All time"
-              value={kpis.activeListings}
-              change={kpis.listingsChange}
-              styleKey="listings"
-              trend={trends.listings}
+              label="Active Listings" sublabel="All time"
+              value={kpis.activeListings} change={kpis.listingsChange}
+              styleKey="listings" trend={trends.listings}
             />
             <KPICard
-              label="Open Tickets"
-              sublabel="All time"
-              value={kpis.openTickets}
-              change={kpis.ticketsChange}
-              styleKey="tickets"
-              trend={trends.tickets}
+              label="Open Tickets" sublabel="All time"
+              value={kpis.openTickets} change={kpis.ticketsChange}
+              styleKey="tickets" trend={trends.tickets}
             />
           </div>
 
           <TasksCard tasks={TODAY_TASKS} />
 
+          {/* ── Orders table ── */}
           <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
-
-            {/* ── Toolbar ── */}
             <div className="px-5 pt-4 pb-3 border-b border-gray-100 space-y-3">
               <div className="flex items-center gap-3 flex-wrap">
                 <h2 className="font-semibold text-gray-800 mr-auto">Recent Orders</h2>
                 <button
                   onClick={() => { setSearch(''); setStatusFilter('all') }}
-                  className="text-sm text-indigo-600 hover:text-indigo-800 font-medium transition"
+                  className="text-sm text-blue-500 hover:text-blue-700 font-medium transition"
                 >
                   View all →
                 </button>
               </div>
               <div className="flex items-center gap-2 flex-wrap">
-                {/* Search */}
                 <div className="relative flex-1 min-w-[160px]">
                   <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs select-none">🔍</span>
                   <input
@@ -246,14 +225,13 @@ export default function Dashboard() {
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     placeholder="Search order ID or product..."
-                    className="w-full pl-8 pr-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-300 bg-gray-50 placeholder:text-gray-400"
+                    className="w-full pl-8 pr-3 py-1.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300 bg-gray-50 placeholder:text-gray-400"
                   />
                 </div>
-                {/* Status filter */}
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer"
+                  className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300 cursor-pointer"
                 >
                   {STATUS_OPTIONS.map((s) => (
                     <option key={s} value={s}>
@@ -261,21 +239,19 @@ export default function Dashboard() {
                     </option>
                   ))}
                 </select>
-                {/* Result count */}
                 <span className="text-xs text-gray-400 shrink-0">
                   {tableOrders.length} of {filteredOrders.length}
-                  {isFiltered && <span className="text-indigo-400 ml-1">(filtered)</span>}
+                  {isFiltered && <span className="text-blue-400 ml-1">(filtered)</span>}
                 </span>
               </div>
             </div>
 
-            {/* ── Table ── */}
             {tableOrders.length === 0 ? (
               <div className="text-center py-12">
                 <p className="text-gray-400 text-sm">No orders match your search.</p>
                 <button
                   onClick={() => { setSearch(''); setStatusFilter('all') }}
-                  className="mt-2 text-xs text-indigo-500 hover:text-indigo-700 transition"
+                  className="mt-2 text-xs text-blue-500 hover:text-blue-700 transition"
                 >
                   Clear filters
                 </button>
@@ -284,12 +260,11 @@ export default function Dashboard() {
               <table className="w-full text-sm">
                 <thead className="bg-gray-50 border-b border-gray-100">
                   <tr>
-                    <th className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Order</th>
-                    <th className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Product</th>
-                    <th className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Amount</th>
-                    <th className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Channel</th>
-                    <th className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
-                    <th className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
+                    {['Order', 'Product', 'Amount', 'Channel', 'Status', 'Date'].map((h) => (
+                      <th key={h} className="px-5 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                        {h}
+                      </th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50">
@@ -317,10 +292,9 @@ export default function Dashboard() {
               </table>
             )}
           </div>
+        </div>
 
-        </div>{/* end left column */}
-
-        {/* ── Right column: AI Copilot ── */}
+        {/* ── Right column: Sil ── */}
         <div className="lg:col-span-1">
           <div className="sticky top-6">
             <AIPanel
@@ -333,11 +307,12 @@ export default function Dashboard() {
               defaultPrompt="Summarize the store's health based on today's KPIs and recent activity. Highlight any concerns and quick wins."
               suggestions={AI_SUGGESTIONS}
               recentInsights={AI_RECENT_INSIGHTS}
+              description="Sil is monitoring your store. Ask anything about KPIs, orders, or trends."
             />
           </div>
         </div>
 
-      </div>{/* end main grid */}
+      </div>
     </div>
   )
 }

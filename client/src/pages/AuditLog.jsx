@@ -41,9 +41,7 @@ export default function AuditLog() {
   const [dateFilter, setDateFilter]     = useState('')
 
   useEffect(() => {
-    fetch('/api/audit')
-      .then((r) => r.json())
-      .then(setEntries)
+    fetch('/api/audit').then((r) => r.json()).then(setEntries)
   }, [])
 
   const filteredEntries = useMemo(() => {
@@ -56,7 +54,7 @@ export default function AuditLog() {
   }, [entries, actionFilter, statusFilter, dateFilter])
 
   async function updateStatus(id, newStatus) {
-    const res = await fetch(`/api/audit/${id}`, {
+    const res     = await fetch(`/api/audit/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status: newStatus }),
@@ -67,21 +65,19 @@ export default function AuditLog() {
 
   function exportCSV() {
     const headers = ['ID', 'Timestamp', 'Action Type', 'Item', 'SKU', 'Amount', 'Reasoning', 'Status', 'Error']
-    const rows = filteredEntries.map((e) => [
-      escapeCSV(e.id),
-      escapeCSV(e.timestamp),
+    const rows    = filteredEntries.map((e) => [
+      escapeCSV(e.id), escapeCSV(e.timestamp),
       escapeCSV(ACTION_LABELS[e.actionType] || e.actionType),
-      escapeCSV(e.item),
-      escapeCSV(e.sku),
+      escapeCSV(e.item), escapeCSV(e.sku),
       e.amount > 0 ? `$${e.amount.toFixed(2)}` : '—',
       escapeCSV(e.reasoning),
       escapeCSV(STATUS_STYLES[e.status]?.label || e.status),
       escapeCSV(e.error || ''),
     ])
-    const csv = [headers.join(','), ...rows.map((r) => r.join(','))].join('\n')
+    const csv  = [headers.join(','), ...rows.map((r) => r.join(','))].join('\n')
     const blob = new Blob([csv], { type: 'text/csv' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
+    const url  = URL.createObjectURL(blob)
+    const a    = document.createElement('a')
     a.href = url
     a.download = `audit-log-${new Date().toISOString().slice(0, 10)}.csv`
     a.click()
@@ -97,11 +93,12 @@ export default function AuditLog() {
       <div className="flex items-start justify-between gap-4 flex-wrap">
         <div>
           <h1 className="text-2xl font-bold text-gray-800">Audit Log</h1>
-          <p className="text-sm text-gray-500 mt-1">All autonomous and AI-assisted actions taken on your store.</p>
+          <p className="text-sm text-gray-500 mt-1">All autonomous and Sil-assisted actions taken on your store.</p>
         </div>
         <div className="flex items-center gap-3">
           {pendingCount > 0 && (
-            <span className="text-sm font-medium bg-amber-100 text-amber-700 border border-amber-200 px-3 py-1.5 rounded-full">
+            <span className="flex items-center gap-1.5 text-sm font-medium bg-amber-100 text-amber-700 border border-amber-200 px-3 py-1.5 rounded-full">
+              <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
               {pendingCount} pending approval
             </span>
           )}
@@ -122,7 +119,7 @@ export default function AuditLog() {
         <select
           value={actionFilter}
           onChange={(e) => setActionFilter(e.target.value)}
-          className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer"
+          className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300 cursor-pointer"
         >
           {ACTION_TYPES.map((t) => (
             <option key={t} value={t}>{t === 'all' ? 'All action types' : ACTION_LABELS[t]}</option>
@@ -132,7 +129,7 @@ export default function AuditLog() {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-300 cursor-pointer"
+          className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300 cursor-pointer"
         >
           <option value="all">All statuses</option>
           {Object.entries(STATUS_STYLES).map(([val, s]) => (
@@ -144,13 +141,13 @@ export default function AuditLog() {
           type="date"
           value={dateFilter}
           onChange={(e) => setDateFilter(e.target.value)}
-          className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+          className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300"
         />
 
         {(actionFilter !== 'all' || statusFilter !== 'all' || dateFilter) && (
           <button
             onClick={() => { setActionFilter('all'); setStatusFilter('all'); setDateFilter('') }}
-            className="ml-auto text-xs text-gray-400 hover:text-red-400 transition"
+            className="text-xs text-gray-400 hover:text-red-400 transition"
           >
             ✕ Clear
           </button>
@@ -170,20 +167,21 @@ export default function AuditLog() {
             <table className="w-full text-sm">
               <thead className="bg-gray-50 border-b border-gray-100">
                 <tr>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap">Timestamp</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Type</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Item</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Amount</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">AI Reasoning</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
-                  <th className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+                  {['Timestamp', 'Type', 'Item', 'Amount', 'Sil Reasoning', 'Status', 'Actions'].map((h) => (
+                    <th key={h} className="px-4 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider whitespace-nowrap">
+                      {h}
+                    </th>
+                  ))}
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {filteredEntries.map((entry) => {
-                  const statusStyle = STATUS_STYLES[entry.status] || STATUS_STYLES['failed']
+                  const ss = STATUS_STYLES[entry.status] || STATUS_STYLES['failed']
                   return (
-                    <tr key={entry.id} className={`hover:bg-gray-50 transition-colors ${entry.status === 'pending-approval' ? 'bg-amber-50/30' : ''}`}>
+                    <tr
+                      key={entry.id}
+                      className={`hover:bg-gray-50 transition-colors ${entry.status === 'pending-approval' ? 'bg-amber-50/30' : ''}`}
+                    >
                       <td className="px-4 py-3.5 whitespace-nowrap">
                         <p className="text-xs font-mono text-gray-500">{formatTS(entry.timestamp)}</p>
                         <p className="text-xs text-gray-400 mt-0.5">{entry.id}</p>
@@ -208,14 +206,12 @@ export default function AuditLog() {
                         <p className="text-xs text-gray-600 leading-snug line-clamp-2" title={entry.reasoning}>
                           {entry.reasoning}
                         </p>
-                        {entry.error && (
-                          <p className="text-xs text-red-500 mt-1">⚠ {entry.error}</p>
-                        )}
+                        {entry.error && <p className="text-xs text-red-500 mt-1">⚠ {entry.error}</p>}
                       </td>
                       <td className="px-4 py-3.5 whitespace-nowrap">
-                        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${statusStyle.pill}`}>
-                          <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${statusStyle.dot}`} />
-                          {statusStyle.label}
+                        <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${ss.pill}`}>
+                          <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${ss.dot}`} />
+                          {ss.label}
                         </span>
                       </td>
                       <td className="px-4 py-3.5 whitespace-nowrap">
@@ -223,13 +219,13 @@ export default function AuditLog() {
                           <div className="flex gap-1.5">
                             <button
                               onClick={() => updateStatus(entry.id, 'approved')}
-                              className="text-xs bg-emerald-600 text-white px-3 py-1 rounded-lg hover:bg-emerald-700 transition font-medium"
+                              className="text-xs bg-green-500 text-white px-3 py-1 rounded-lg hover:bg-green-600 transition font-medium shadow-sm"
                             >
                               ✓ Approve
                             </button>
                             <button
                               onClick={() => updateStatus(entry.id, 'rejected')}
-                              className="text-xs bg-red-100 text-red-700 border border-red-200 px-3 py-1 rounded-lg hover:bg-red-200 transition font-medium"
+                              className="text-xs bg-red-50 text-red-600 border border-red-200 px-3 py-1 rounded-lg hover:bg-red-100 transition font-medium"
                             >
                               ✕ Reject
                             </button>

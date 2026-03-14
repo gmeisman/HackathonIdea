@@ -8,20 +8,28 @@
     "sentiment": "frustrated",
     "date": "2026-03-14",
     "messages": [
-      { "from": "customer", "text": "I bought the wireless headphones yesterday and they won't connect to my laptop at all. I've tried restarting both devices. This is really frustrating!" }
+      {
+        "from": "customer",
+        "text": "I bought the wireless headphones yesterday and they won't connect to my laptop at all. I've tried restarting both devices. This is really frustrating!"
+      }
     ]
   },
   {
     "id": "TKT-002",
     "customer": "Bob Martinez",
     "subject": "Wrong item received",
-    "status": "open",
+    "status": "resolved",
     "priority": "urgent",
     "sentiment": "angry",
     "date": "2026-03-14",
     "messages": [
-      { "from": "customer", "text": "I ordered a USB-C Hub but received a charging cable instead. I need this for a work presentation today. Please fix this immediately!" }
-    ]
+      {
+        "from": "customer",
+        "text": "I ordered a USB-C Hub but received a charging cable instead. I need this for a work presentation today. Please fix this immediately!"
+      }
+    ],
+    "reply": "\"Apologies for the mix-up, Bob. We've identified the issue and are Urgently arranging a USB-C Hub replacement. We understand the importance of this for your presentation today. Can you please confirm your shipping address? We'll have it sent out promptly. Sincere apologies for the inconvenience caused.\"",
+    "resolvedAt": "2026-03-14T21:45:16.227Z"
   },
   {
     "id": "TKT-003",
@@ -32,7 +40,10 @@
     "sentiment": "neutral",
     "date": "2026-03-13",
     "messages": [
-      { "from": "customer", "text": "The keyboard is okay but the tactile feel is quite different from what the listing described. Is there a return policy I should know about?" }
+      {
+        "from": "customer",
+        "text": "The keyboard is okay but the tactile feel is quite different from what the listing described. Is there a return policy I should know about?"
+      }
     ]
   },
   {
@@ -44,7 +55,10 @@
     "sentiment": "positive",
     "date": "2026-03-12",
     "messages": [
-      { "from": "customer", "text": "Just wanted to say the monitor stand arrived next day and it's exactly what I needed. Great product and fast shipping!" }
+      {
+        "from": "customer",
+        "text": "Just wanted to say the monitor stand arrived next day and it's exactly what I needed. Great product and fast shipping!"
+      }
     ]
   },
   {
@@ -56,7 +70,10 @@
     "sentiment": "disappointed",
     "date": "2026-03-12",
     "messages": [
-      { "from": "customer", "text": "The speaker sounds great but the battery only lasts about 4 hours, not the 10 hours advertised. This seems quite misleading." }
+      {
+        "from": "customer",
+        "text": "The speaker sounds great but the battery only lasts about 4 hours, not the 10 hours advertised. This seems quite misleading."
+      }
     ]
   }
 ]

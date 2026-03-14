@@ -1,0 +1,50 @@
+[
+  {
+    "id": "AL-001",
+    "sku": "WH-001",
+    "productName": "Wireless Headphones",
+    "channel": "Amazon",
+    "recommendedPrice": 87.29,
+    "status": "live",
+    "silReasoning": "Audio category trending up 12.4% WoW with demand score 8.7/10. WH-001 demand boosted 1.5x by travel season commuter audio demand. Stock at 23 units (above reorder point of 10). Currently only active on eBay — Amazon expansion targets higher-intent buyers at a 81% sell-through rate.",
+    "trendData": {
+      "demandScore": 8.7,
+      "weeklyGrowth": 12.4,
+      "category": "Audio"
+    },
+    "createdAt": "2026-03-14T06:15:00Z",
+    "revenue": 0
+  },
+  {
+    "id": "AL-002",
+    "sku": "GM-001",
+    "productName": "Gaming Mouse 12K DPI",
+    "channel": "Amazon",
+    "recommendedPrice": 58.19,
+    "status": "live",
+    "silReasoning": "Peripherals category leading at 9.2 demand score (+18.1% WoW). Gaming Mouse 12K DPI demand boosted 1.8x by gaming tournament season. Stock at 31 units (well above reorder point of 10). Amazon is the top channel for Peripherals with 81% sell-through rate. Currently only active on eBay.",
+    "trendData": {
+      "demandScore": 9.2,
+      "weeklyGrowth": 18.1,
+      "category": "Peripherals"
+    },
+    "createdAt": "2026-03-14T06:16:00Z",
+    "revenue": 0
+  },
+  {
+    "id": "AL-003",
+    "sku": "CC-001",
+    "productName": "Phone Charging Cable 3-Pack",
+    "channel": "Amazon",
+    "recommendedPrice": 12.6,
+    "status": "live",
+    "silReasoning": "Accessories category maintains steady 7.4 demand score — reliable volume seller year-round. CC-001 has 145 units in stock (2.9x above reorder point of 50), ideal for high-velocity Amazon listings. Auto-posted under full-auto mode for Accessories category.",
+    "trendData": {
+      "demandScore": 7.4,
+      "weeklyGrowth": 3.2,
+      "category": "Accessories"
+    },
+    "createdAt": "2026-03-13T11:00:00Z",
+    "revenue": 327.6
+  }
+]

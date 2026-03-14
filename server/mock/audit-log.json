@@ -1,5 +1,97 @@
 [
   {
+    "id": "AUD-019",
+    "timestamp": "2026-03-14T21:47:51.590Z",
+    "actionType": "support-reply",
+    "item": "TKT-001 (Alice Johnson)",
+    "sku": null,
+    "amount": 0,
+    "reasoning": "Sil drafted reply for ticket: \"Headphones not pairing with my laptop\"",
+    "status": "auto-executed"
+  },
+  {
+    "id": "AUD-018",
+    "timestamp": "2026-03-14T21:47:27.273Z",
+    "actionType": "auto-listing-approved",
+    "item": "Gaming Mouse 12K DPI",
+    "sku": "GM-001",
+    "amount": 58.19,
+    "reasoning": "User approved Sil auto-listing for Gaming Mouse 12K DPI on Amazon at $58.19.",
+    "status": "auto-executed",
+    "channel": "Amazon"
+  },
+  {
+    "id": "AUD-017",
+    "timestamp": "2026-03-14T21:45:16.288Z",
+    "actionType": "support-reply",
+    "item": "TKT-002 (Bob Martinez)",
+    "sku": null,
+    "amount": 0,
+    "reasoning": "Reply posted for ticket: \"Wrong item received\". Draft: \"\"Apologies for the mix-up, Bob. We've identified the issue and are Urgently arranging a USB-C Hub re...\"",
+    "status": "approved"
+  },
+  {
+    "id": "AUD-016",
+    "timestamp": "2026-03-14T21:45:08.264Z",
+    "actionType": "support-reply",
+    "item": "TKT-002 (Bob Martinez)",
+    "sku": null,
+    "amount": 0,
+    "reasoning": "Sil drafted reply for ticket: \"Wrong item received\"",
+    "status": "auto-executed"
+  },
+  {
+    "id": "AUD-015",
+    "timestamp": "2026-03-14T21:44:48.589Z",
+    "actionType": "auto-listing-approved",
+    "item": "Wireless Headphones",
+    "sku": "WH-001",
+    "amount": 87.29,
+    "reasoning": "User approved Sil auto-listing for Wireless Headphones on Amazon at $87.29.",
+    "status": "auto-executed",
+    "channel": "Amazon"
+  },
+  {
+    "id": "AUD-014",
+    "timestamp": "2026-03-14T21:24:03.252Z",
+    "actionType": "listing-post",
+    "item": "Wireless Headphones",
+    "sku": "WH-001",
+    "amount": 0,
+    "reasoning": "User posted Wireless Headphones to eBay. Sil-assisted listing with generated description.",
+    "status": "auto-executed"
+  },
+  {
+    "id": "AUD-013",
+    "timestamp": "2026-03-14T21:24:02.407Z",
+    "actionType": "listing-post",
+    "item": "Wireless Headphones",
+    "sku": "WH-001",
+    "amount": 0,
+    "reasoning": "User posted Wireless Headphones to eBay. Sil-assisted listing with generated description.",
+    "status": "auto-executed"
+  },
+  {
+    "id": "AUD-012",
+    "timestamp": "2026-03-14T21:20:15.034Z",
+    "actionType": "support-reply",
+    "item": "TKT-001 (Alice Johnson)",
+    "sku": null,
+    "amount": 0,
+    "reasoning": "Sil drafted reply for ticket: \"Headphones not pairing with my laptop\"",
+    "status": "auto-executed"
+  },
+  {
+    "id": "AUD-011",
+    "timestamp": "2026-03-14T20:43:35.331Z",
+    "actionType": "support-reply",
+    "item": "TKT-001 (Alice Johnson)",
+    "sku": null,
+    "amount": 0,
+    "reasoning": "AI drafted reply for ticket: \"Headphones not pairing with my laptop\"",
+    "status": "auto-executed"
+  },
+  {
     "id": "AUD-010",
     "timestamp": "2026-03-14T09:15:00Z",
     "actionType": "reorder",

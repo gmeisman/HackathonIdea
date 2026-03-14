@@ -6,7 +6,7 @@ const AUTONOMY_MODES = [
     value: 'full-auto',
     label: 'Full Auto',
     icon: '⚡',
-    description: 'AI executes all actions instantly. No approval needed for any action.',
+    description: 'Sil executes all actions instantly. No approval needed for any action.',
     risk: 'High autonomy',
     riskColor: 'text-red-500',
   },
@@ -22,16 +22,16 @@ const AUTONOMY_MODES = [
     value: 'manual',
     label: 'Manual',
     icon: '🔒',
-    description: 'Every AI suggestion requires your explicit approval before executing.',
+    description: 'Every Sil suggestion requires your explicit approval before executing.',
     risk: 'Full control',
     riskColor: 'text-green-600',
   },
 ]
 
 const NOTIFICATION_OPTIONS = [
-  { value: 'all',              label: 'Every auto action',       description: 'Get notified whenever the AI executes anything.' },
-  { value: 'approvals-needed', label: 'Approvals needed only',   description: 'Only notify when an action is waiting for your sign-off.' },
-  { value: 'failures',         label: 'Failures only',           description: 'Only notify when an AI action fails.' },
+  { value: 'all',              label: 'Every auto action',     description: 'Get notified whenever Sil executes anything.' },
+  { value: 'approvals-needed', label: 'Approvals needed only', description: 'Only notify when an action is waiting for your sign-off.' },
+  { value: 'failures',         label: 'Failures only',         description: 'Only notify when a Sil action fails.' },
 ]
 
 const CATEGORIES = ['Audio', 'Accessories', 'Peripherals', 'Video', 'Furniture']
@@ -65,9 +65,7 @@ export default function AutonomySettings() {
       .catch(() => setSettings(DEFAULT_SETTINGS))
   }, [])
 
-  function set(patch) {
-    setSettings((prev) => ({ ...prev, ...patch }))
-  }
+  function set(patch) { setSettings((prev) => ({ ...prev, ...patch })) }
 
   function setCategoryOverride(cat, value) {
     setSettings((prev) => ({
@@ -90,16 +88,19 @@ export default function AutonomySettings() {
 
   if (!settings) return <p className="text-gray-400 p-4">Loading settings...</p>
 
+  const inputCls = 'flex-1 px-3 py-2 text-sm focus:outline-none'
+  const wrapCls  = 'flex items-center border border-gray-200 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-300'
+
   return (
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-gray-800">Autonomy Settings</h1>
-        <p className="text-sm text-gray-500 mt-1">Control how much the AI can act on your behalf without asking.</p>
+        <p className="text-sm text-gray-500 mt-1">Control how much Sil can act on your behalf without asking.</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
 
-        {/* ── Left: all settings ── */}
+        {/* ── Left: settings ── */}
         <div className="lg:col-span-2 space-y-5">
 
           {/* Emergency Pause */}
@@ -117,11 +118,10 @@ export default function AutonomySettings() {
                 </div>
                 <p className="text-sm text-gray-500">
                   {settings.emergencyPause
-                    ? 'All autonomous actions are frozen. No AI actions will execute until this is lifted.'
-                    : 'System is active. AI can execute actions within your configured limits.'}
+                    ? 'All autonomous actions are frozen. No Sil actions will execute until this is lifted.'
+                    : 'System is active. Sil can execute actions within your configured limits.'}
                 </p>
               </div>
-              {/* Toggle */}
               <button
                 onClick={() => set({ emergencyPause: !settings.emergencyPause })}
                 className={`relative inline-flex w-14 h-7 rounded-full shrink-0 transition-colors duration-200 focus:outline-none ${
@@ -146,16 +146,14 @@ export default function AutonomySettings() {
                     key={mode.value}
                     onClick={() => set({ autonomyMode: mode.value })}
                     className={`text-left p-4 rounded-xl border-2 transition-all ${
-                      active
-                        ? 'border-indigo-500 bg-indigo-50'
-                        : 'border-gray-200 hover:border-indigo-300 hover:bg-gray-50'
+                      active ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xl">{mode.icon}</span>
                       <span className={`text-xs font-semibold ${mode.riskColor}`}>{mode.risk}</span>
                     </div>
-                    <p className={`font-semibold text-sm mb-1 ${active ? 'text-indigo-700' : 'text-gray-700'}`}>{mode.label}</p>
+                    <p className={`font-semibold text-sm mb-1 ${active ? 'text-blue-700' : 'text-gray-700'}`}>{mode.label}</p>
                     <p className="text-xs text-gray-500 leading-snug">{mode.description}</p>
                   </button>
                 )
@@ -169,39 +167,30 @@ export default function AutonomySettings() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
                 <label className="block text-xs font-medium text-gray-600 mb-1">Auto-approve below</label>
-                <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-indigo-300">
+                <div className={wrapCls}>
                   <span className="px-3 py-2 bg-gray-50 text-gray-500 text-sm border-r border-gray-200">$</span>
-                  <input
-                    type="number" min="0"
-                    value={settings.autoApproveThreshold}
+                  <input type="number" min="0" value={settings.autoApproveThreshold}
                     onChange={(e) => set({ autoApproveThreshold: Number(e.target.value) })}
-                    className="flex-1 px-3 py-2 text-sm focus:outline-none"
-                  />
+                    className={inputCls} />
                 </div>
                 <p className="text-xs text-gray-400 mt-1">Orders under this amount execute automatically.</p>
               </div>
               <div>
                 <label className="block text-xs font-medium text-gray-600 mb-1">Max single order cap</label>
-                <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-indigo-300">
+                <div className={wrapCls}>
                   <span className="px-3 py-2 bg-gray-50 text-gray-500 text-sm border-r border-gray-200">$</span>
-                  <input
-                    type="number" min="0"
-                    value={settings.maxSingleOrderValue}
+                  <input type="number" min="0" value={settings.maxSingleOrderValue}
                     onChange={(e) => set({ maxSingleOrderValue: Number(e.target.value) })}
-                    className="flex-1 px-3 py-2 text-sm focus:outline-none"
-                  />
+                    className={inputCls} />
                 </div>
                 <p className="text-xs text-gray-400 mt-1">Hard limit — never exceeded regardless of other settings.</p>
               </div>
               <div>
                 <label className="block text-xs font-medium text-gray-600 mb-1">Reorder trigger</label>
-                <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-indigo-300">
-                  <input
-                    type="number" min="0"
-                    value={settings.reorderTrigger}
+                <div className={wrapCls}>
+                  <input type="number" min="0" value={settings.reorderTrigger}
                     onChange={(e) => set({ reorderTrigger: Number(e.target.value) })}
-                    className="flex-1 px-3 py-2 text-sm focus:outline-none"
-                  />
+                    className={inputCls} />
                   <span className="px-3 py-2 bg-gray-50 text-gray-500 text-sm border-l border-gray-200">units</span>
                 </div>
                 <p className="text-xs text-gray-400 mt-1">Min stock level that triggers an automatic reorder.</p>
@@ -222,7 +211,7 @@ export default function AutonomySettings() {
                   <select
                     value={settings.categoryOverrides[cat] || 'semi-auto'}
                     onChange={(e) => setCategoryOverride(cat, e.target.value)}
-                    className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                    className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300"
                   >
                     <option value="full-auto">Full Auto</option>
                     <option value="semi-auto">Semi-Auto</option>
@@ -243,7 +232,7 @@ export default function AutonomySettings() {
                   <label
                     key={opt.value}
                     className={`flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-colors ${
-                      active ? 'border-indigo-300 bg-indigo-50' : 'border-gray-100 hover:bg-gray-50'
+                      active ? 'border-blue-300 bg-blue-50' : 'border-gray-100 hover:bg-gray-50'
                     }`}
                   >
                     <input
@@ -252,7 +241,7 @@ export default function AutonomySettings() {
                       value={opt.value}
                       checked={active}
                       onChange={() => set({ notificationPreference: opt.value })}
-                      className="mt-0.5 accent-indigo-600"
+                      className="mt-0.5 accent-blue-500"
                     />
                     <div>
                       <p className="text-sm font-medium text-gray-700">{opt.label}</p>
@@ -268,28 +257,24 @@ export default function AutonomySettings() {
           <button
             onClick={handleSave}
             disabled={saving}
-            className={`w-full py-3 rounded-xl font-semibold text-sm transition-all ${
+            className={`w-full py-3 rounded-xl font-semibold text-sm transition-all shadow-sm ${
               saved
-                ? 'bg-emerald-500 text-white'
-                : 'bg-indigo-600 text-white hover:bg-indigo-700 disabled:opacity-50'
+                ? 'bg-green-500 text-white'
+                : 'bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50 shadow-blue-500/20'
             }`}
           >
             {saved ? '✓ Settings saved' : saving ? 'Saving...' : 'Save Settings'}
           </button>
 
-        </div>{/* end left column */}
+        </div>
 
-        {/* ── Right: AI Copilot ── */}
+        {/* ── Right: Sil ── */}
         <div className="lg:col-span-1">
           <div className="sticky top-6">
             <AIPanel
               screen="settings"
-              contextData={{
-                allData: settings,
-                filteredData: settings,
-                activeFilters: {},
-              }}
-              description="I'll explain what your current autonomy configuration means in plain English, and flag any risks."
+              contextData={{ allData: settings, filteredData: settings, activeFilters: {} }}
+              description="Sil will explain what your current autonomy configuration means in plain English, and flag any risks."
               defaultPrompt="Explain what the current autonomy configuration means in practice. What actions will execute automatically, what will need approval, and are there any risks with this setup the user should know about?"
               suggestions={SETTINGS_SUGGESTIONS}
             />

@@ -3,7 +3,7 @@ import express from 'express';
 const router = express.Router();
 
 function buildSystemPrompt(context) {
-  return `You are an AI assistant for an ecommerce store manager. Be concise and actionable.
+  return `You are Sil, an AI assistant for an ecommerce store manager. Be concise and actionable.
 
 You have access to the complete dataset (allData) and the user's current filtered view (filteredData). Use allData for analysis and comparisons, but be aware of what the user is currently looking at via filteredData and activeFilters so you can answer context-aware questions.
 
@@ -19,7 +19,7 @@ async function callHuggingFace(prompt, context) {
 
   const HF_URL = 'https://router.huggingface.co/featherless-ai/v1/chat/completions';
   const HF_MODEL = 'mistralai/Mistral-Nemo-Instruct-2407';
-  console.log(`[AI] HuggingFace request → URL: ${HF_URL} | model: ${HF_MODEL}`);
+  console.log(`[Sil] HuggingFace request → URL: ${HF_URL} | model: ${HF_MODEL}`);
 
   const response = await fetch(
     HF_URL,
@@ -84,14 +84,14 @@ router.post('/', async (req, res) => {
     const text = await callHuggingFace(prompt, context || {});
     return res.json({ text, source: 'huggingface' });
   } catch (hfErr) {
-    console.warn(`[AI] HuggingFace failed (${hfErr.message}), trying Ollama...`);
+    console.warn(`[Sil] HuggingFace failed (${hfErr.message}), trying Ollama...`);
     try {
       const text = await callOllama(prompt, context || {});
       return res.json({ text, source: 'ollama' });
     } catch (ollamaErr) {
-      console.error(`[AI] Ollama also failed: ${ollamaErr.message}`);
+      console.error(`[Sil] Ollama also failed: ${ollamaErr.message}`);
       return res.status(503).json({
-        error: 'AI service unavailable. Set HUGGINGFACE_API_KEY in server/.env or start Ollama locally.',
+        error: 'Sil is unavailable. Set HUGGINGFACE_API_KEY in server/.env or start Ollama locally.',
       });
     }
   }

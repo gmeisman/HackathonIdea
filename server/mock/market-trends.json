@@ -1,0 +1,94 @@
+{
+  "lastUpdated": "2026-03-14",
+  "categories": [
+    {
+      "name": "Peripherals",
+      "demandScore": 9.2,
+      "trend": "up",
+      "avgSellingPrice": 95.00,
+      "weeklyGrowth": 18.1,
+      "topChannels": ["Amazon", "eBay"],
+      "insight": "Mechanical keyboards and gaming mice dominate the WFH upgrade cycle, boosted by spring semester student purchases and esports tournament season."
+    },
+    {
+      "name": "Audio",
+      "demandScore": 8.7,
+      "trend": "up",
+      "avgSellingPrice": 85.00,
+      "weeklyGrowth": 12.4,
+      "topChannels": ["Amazon", "eBay"],
+      "insight": "Wireless audio accessories surging ahead of spring travel season — commuters and remote workers driving steady demand."
+    },
+    {
+      "name": "Accessories",
+      "demandScore": 7.4,
+      "trend": "stable",
+      "avgSellingPrice": 28.00,
+      "weeklyGrowth": 3.2,
+      "topChannels": ["Amazon", "eBay"],
+      "insight": "USB hubs and charging cables are reliable year-round volume sellers with minimal seasonality."
+    },
+    {
+      "name": "Video",
+      "demandScore": 6.1,
+      "trend": "down",
+      "avgSellingPrice": 52.00,
+      "weeklyGrowth": -4.5,
+      "topChannels": ["Amazon"],
+      "insight": "Webcam demand softening post-pandemic as WFH normalizes. Price compression increasing from budget imports."
+    },
+    {
+      "name": "Furniture",
+      "demandScore": 5.3,
+      "trend": "down",
+      "avgSellingPrice": 38.00,
+      "weeklyGrowth": -7.2,
+      "topChannels": ["eBay"],
+      "insight": "Monitor stands declining as buyers shift to integrated arm mounts and desk-mounted solutions."
+    }
+  ],
+  "hotProducts": [
+    {
+      "sku": "KB-001",
+      "channel": "Amazon",
+      "demandBoost": 2.1,
+      "reasonForTrend": "Spring semester student purchases driving mechanical keyboard upgrades"
+    },
+    {
+      "sku": "GM-001",
+      "channel": "eBay",
+      "demandBoost": 1.8,
+      "reasonForTrend": "Gaming tournament season driving peripheral upgrades"
+    },
+    {
+      "sku": "WH-001",
+      "channel": "Amazon",
+      "demandBoost": 1.5,
+      "reasonForTrend": "Travel season commuter audio demand at peak"
+    },
+    {
+      "sku": "SB-001",
+      "channel": "eBay",
+      "demandBoost": 1.4,
+      "reasonForTrend": "Outdoor and portable speaker demand rising for spring/summer"
+    }
+  ],
+  "channelInsights": {
+    "eBay": {
+      "bestCategories": ["Audio", "Peripherals"],
+      "avgSellThroughRate": 72,
+      "tipOfWeek": "Listings with free shipping convert 34% better on eBay"
+    },
+    "Amazon": {
+      "bestCategories": ["Peripherals", "Accessories"],
+      "avgSellThroughRate": 81,
+      "tipOfWeek": "A+ content pages drive 15% more conversions on Amazon"
+    }
+  },
+  "autoListingStats": {
+    "totalThisPeriod": 3,
+    "revenueGenerated": 327.60,
+    "bestChannel": "Amazon",
+    "avgTimeToFirstSale": "4.2 hours"
+  }
+}

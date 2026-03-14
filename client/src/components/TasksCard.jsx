@@ -5,7 +5,7 @@ const TAG_STYLES = {
   Support:   'bg-red-100 text-red-700 border-red-200',
   Pricing:   'bg-violet-100 text-violet-700 border-violet-200',
   Listings:  'bg-blue-100 text-blue-700 border-blue-200',
-  AI:        'bg-indigo-100 text-indigo-700 border-indigo-200',
+  Sil:       'bg-indigo-100 text-indigo-700 border-indigo-200',
 }
 
 export default function TasksCard({ tasks = [] }) {
@@ -20,22 +20,20 @@ export default function TasksCard({ tasks = [] }) {
   }
 
   const remaining = tasks.filter((t) => !checked.has(t.id)).length
-  const allDone = remaining === 0 && tasks.length > 0
+  const allDone   = remaining === 0 && tasks.length > 0
 
   return (
     <div className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
       {/* Header */}
       <div className="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <span className="w-7 h-7 bg-indigo-600 rounded-lg flex items-center justify-center text-white text-xs shrink-0">
+          <span className="w-7 h-7 bg-blue-500 rounded-lg flex items-center justify-center text-white text-xs shrink-0 shadow-sm">
             ✓
           </span>
           <h2 className="font-semibold text-gray-800">Today's Tasks</h2>
         </div>
         <span className={`text-xs font-medium px-2.5 py-1 rounded-full ${
-          allDone
-            ? 'bg-emerald-100 text-emerald-700'
-            : 'bg-indigo-100 text-indigo-700'
+          allDone ? 'bg-green-100 text-green-700' : 'bg-blue-100 text-blue-700'
         }`}>
           {allDone ? 'All done!' : `${remaining} remaining`}
         </span>
@@ -51,7 +49,7 @@ export default function TasksCard({ tasks = [] }) {
       ) : (
         <ul className="divide-y divide-gray-50">
           {tasks.map((task) => {
-            const done = checked.has(task.id)
+            const done     = checked.has(task.id)
             const tagStyle = TAG_STYLES[task.tag] || 'bg-gray-100 text-gray-600 border-gray-200'
             return (
               <li
@@ -63,14 +61,12 @@ export default function TasksCard({ tasks = [] }) {
               >
                 {/* Checkbox */}
                 <span className={`mt-0.5 w-4 h-4 rounded border-2 flex items-center justify-center shrink-0 transition-colors ${
-                  done
-                    ? 'bg-indigo-600 border-indigo-600'
-                    : 'border-gray-300 hover:border-indigo-400'
+                  done ? 'bg-blue-500 border-blue-500' : 'border-gray-300 hover:border-blue-400'
                 }`}>
                   {done && <span className="text-white text-xs leading-none">✓</span>}
                 </span>
 
-                {/* Icon + Text */}
+                {/* Icon + text */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="text-sm">{task.icon}</span>

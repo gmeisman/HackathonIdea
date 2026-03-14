@@ -4,7 +4,7 @@ const PRIMARY_LINKS = [
   { to: '/',          label: 'Dashboard' },
   { to: '/inventory', label: 'Inventory' },
   { to: '/listings',  label: 'Listings' },
-  { to: '/ai',        label: 'AI Chat' },
+  { to: '/ai',        label: 'Sil Chat' },
   { to: '/support',   label: 'Support' },
   { to: '/reports',   label: 'Reports' },
 ]
@@ -18,7 +18,7 @@ export default function Navbar() {
   return (
     <nav className="bg-indigo-700 text-white shadow-md">
       <div className="container mx-auto px-4 max-w-7xl flex items-center h-14 gap-1 overflow-x-auto">
-        <span className="font-bold text-lg shrink-0 mr-3">🛒 AI Store</span>
+        <span className="font-bold text-lg shrink-0 mr-3">🛒 Sil Store</span>
 
         {/* Primary nav */}
         {PRIMARY_LINKS.map(({ to, label }) => (

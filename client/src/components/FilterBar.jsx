@@ -21,7 +21,7 @@ export default function FilterBar({ range, channel, onRangeChange, onChannelChan
         <select
           value={range}
           onChange={(e) => onRangeChange(e.target.value)}
-          className="text-sm border border-gray-200 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-300 bg-white cursor-pointer"
+          className="text-sm border border-gray-200 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-300 bg-white cursor-pointer"
         >
           {DATE_RANGES.map((r) => (
             <option key={r.value} value={r.value}>{r.label}</option>
@@ -40,7 +40,7 @@ export default function FilterBar({ range, channel, onRangeChange, onChannelChan
               onClick={() => onChannelChange(c)}
               className={`text-xs px-3 py-1 rounded-full font-medium transition ${
                 channel === c
-                  ? 'bg-indigo-600 text-white'
+                  ? 'bg-blue-500 text-white shadow-sm'
                   : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
               }`}
             >
