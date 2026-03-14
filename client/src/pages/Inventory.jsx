@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import AIPanel from '../components/AIPanel.jsx'
+import { BASE_URL } from '../lib/api.js'
 
 // ─── Static maps ─────────────────────────────────────────────────────────────
 
@@ -39,7 +40,7 @@ function StockBadge({ stock, reorderPoint }) {
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 async function postAudit(entry) {
-  await fetch('/api/audit', {
+  await fetch(`${BASE_URL}/api/audit`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ timestamp: new Date().toISOString(), ...entry }),
@@ -82,7 +83,7 @@ Return ONLY valid JSON — no markdown, no extra text:
 
 Rules: use the known unitCost of ${item.unitCost}. If quantity is unspecified, use 3× the reorderPoint (${item.reorderPoint * 3}). If supplier is unspecified, use "Primary Supplier". totalCost = quantity × unitCost.`
 
-      const res  = await fetch('/api/ai', {
+      const res  = await fetch(`${BASE_URL}/api/ai`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt, context: { item }, screen: 'inventory' }),
@@ -94,7 +95,7 @@ Rules: use the known unitCost of ${item.unitCost}. If quantity is unspecified, u
       setDetails(parsed)
 
       // Check autonomy settings
-      const settingsRes = await fetch('/api/settings')
+      const settingsRes = await fetch(`${BASE_URL}/api/settings`)
       const settings    = await settingsRes.json()
       const shouldAuto  =
         settings.autonomyMode === 'full-auto' ||
@@ -116,7 +117,7 @@ Rules: use the known unitCost of ${item.unitCost}. If quantity is unspecified, u
   async function executeOrder(details, isAuto = false) {
     setStep('submitting')
     try {
-      await fetch('/api/orders', {
+      await fetch(`${BASE_URL}/api/orders`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -407,7 +408,7 @@ export default function Inventory() {
   const [selectedItem, setSelectedItem] = useState(null)
 
   useEffect(() => {
-    fetch('/api/inventory').then((r) => r.json()).then(setItems)
+    fetch(`${BASE_URL}/api/inventory`).then((r) => r.json()).then(setItems)
   }, [])
 
   const atRisk   = items.filter((i) => i.stock <= i.reorderPoint)

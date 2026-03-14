@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from 'react'
+import { BASE_URL } from '../lib/api.js'
 
 const ACTION_TYPES = ['all', 'reorder', 'listing-post', 'support-reply', 'price-update']
 
@@ -41,7 +42,7 @@ export default function AuditLog() {
   const [dateFilter, setDateFilter]     = useState('')
 
   useEffect(() => {
-    fetch('/api/audit').then((r) => r.json()).then(setEntries)
+    fetch(`${BASE_URL}/api/audit`).then((r) => r.json()).then(setEntries)
   }, [])
 
   const filteredEntries = useMemo(() => {
@@ -54,7 +55,7 @@ export default function AuditLog() {
   }, [entries, actionFilter, statusFilter, dateFilter])
 
   async function updateStatus(id, newStatus) {
-    const res     = await fetch(`/api/audit/${id}`, {
+    const res     = await fetch(`${BASE_URL}/api/audit/${id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status: newStatus }),

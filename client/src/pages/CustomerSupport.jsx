@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import AIPanel from '../components/AIPanel.jsx'
 import { useAI } from '../hooks/useAI.js'
+import { BASE_URL } from '../lib/api.js'
 
 // ─── Config ──────────────────────────────────────────────────────────────────
 
@@ -29,7 +30,7 @@ const SENTIMENT_ICONS = {
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 async function postAudit(entry) {
-  await fetch('/api/audit', {
+  await fetch(`${BASE_URL}/api/audit`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ timestamp: new Date().toISOString(), ...entry }),
@@ -90,7 +91,7 @@ function PostReplyModal({ ticket, initialDraft, onClose, onPosted }) {
     setPosting(true)
     setError(null)
     try {
-      const res        = await fetch(`/api/support/${ticket.id}`, {
+      const res        = await fetch(`${BASE_URL}/api/support/${ticket.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -372,7 +373,7 @@ export default function CustomerSupport() {
   const [toast, setToast]     = useState(null)
 
   useEffect(() => {
-    fetch('/api/support').then((r) => r.json()).then(setTickets)
+    fetch(`${BASE_URL}/api/support`).then((r) => r.json()).then(setTickets)
   }, [])
 
   function handleTicketUpdated(updatedTicket) {

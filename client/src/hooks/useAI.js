@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import { BASE_URL } from '../lib/api.js'
 
 export function useAI() {
   const [response, setResponse] = useState(null)
@@ -9,7 +10,7 @@ export function useAI() {
     setLoading(true)
     setError(null)
     try {
-      const res = await fetch('/api/ai', {
+      const res = await fetch(`${BASE_URL}/api/ai`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt, context, screen }),

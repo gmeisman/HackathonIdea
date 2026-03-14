@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import AIPanel from '../components/AIPanel.jsx'
+import { BASE_URL } from '../lib/api.js'
 
 const AUTONOMY_MODES = [
   {
@@ -59,7 +60,7 @@ export default function AutonomySettings() {
   const [saving, setSaving]     = useState(false)
 
   useEffect(() => {
-    fetch('/api/settings')
+    fetch(`${BASE_URL}/api/settings`)
       .then((r) => r.json())
       .then(setSettings)
       .catch(() => setSettings(DEFAULT_SETTINGS))
@@ -76,7 +77,7 @@ export default function AutonomySettings() {
 
   async function handleSave() {
     setSaving(true)
-    await fetch('/api/settings', {
+    await fetch(`${BASE_URL}/api/settings`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(settings),

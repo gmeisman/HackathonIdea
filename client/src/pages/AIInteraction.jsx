@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react'
+import { BASE_URL } from '../lib/api.js'
 
 const SUGGESTED_PROMPTS = [
   'Which products should I restock this week?',
@@ -38,7 +39,7 @@ export default function AIInteraction() {
     setLoading(true)
 
     try {
-      const res = await fetch('/api/ai', {
+      const res = await fetch(`${BASE_URL}/api/ai`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

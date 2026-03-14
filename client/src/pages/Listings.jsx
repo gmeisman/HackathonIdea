@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import AIPanel from '../components/AIPanel.jsx'
 import { useAI } from '../hooks/useAI.js'
+import { BASE_URL } from '../lib/api.js'
 
 const PRODUCT_ICONS = {
   'WH-001': '🎧', 'KB-001': '⌨️', 'GM-001': '🖱️',
@@ -73,7 +74,7 @@ function AutoChannelBadge({ channel }) {
 }
 
 async function postAuditEntry(entry) {
-  await fetch('/api/audit', {
+  await fetch(`${BASE_URL}/api/audit`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ timestamp: new Date().toISOString(), ...entry }),
@@ -93,7 +94,7 @@ function AutoListingCard({ listing, onUpdated }) {
 
   async function handleApprove() {
     setBusy(true)
-    const res = await fetch(`/api/listings/auto-listings/${listing.id}`, {
+    const res = await fetch(`${BASE_URL}/api/listings/auto-listings/${listing.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status: 'live' }),
@@ -115,7 +116,7 @@ function AutoListingCard({ listing, onUpdated }) {
 
   async function handleReject() {
     setBusy(true)
-    const res = await fetch(`/api/listings/auto-listings/${listing.id}`, {
+    const res = await fetch(`${BASE_URL}/api/listings/auto-listings/${listing.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status: 'rejected' }),
@@ -232,7 +233,7 @@ function SilAutoListingsSection({ autoListings, onRefresh }) {
     setEvaluating(true)
     setLastResult(null)
     try {
-      const res  = await fetch('/api/listings/auto-evaluate', { method: 'POST' })
+      const res  = await fetch(`${BASE_URL}/api/listings/auto-evaluate`, { method: 'POST' })
       const data = await res.json()
       setLastResult(data.evaluated)
       onRefresh()
@@ -409,8 +410,8 @@ export default function Listings() {
   const [autoListings, setAutoListings] = useState([])
 
   function loadAll() {
-    fetch('/api/listings').then((r) => r.json()).then(setListings)
-    fetch('/api/listings/auto-listings').then((r) => r.json()).then(setAutoListings)
+    fetch(`${BASE_URL}/api/listings`).then((r) => r.json()).then(setListings)
+    fetch(`${BASE_URL}/api/listings/auto-listings`).then((r) => r.json()).then(setAutoListings)
   }
 
   useEffect(() => { loadAll() }, [])

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import AIPanel from '../components/AIPanel.jsx'
+import { BASE_URL } from '../lib/api.js'
 
 // ─── Report type config ───────────────────────────────────────────────────────
 
@@ -33,7 +34,7 @@ const DATA_KEYS = {
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 async function fetchReportData(type) {
-  const results = await Promise.all(ENDPOINTS[type].map((url) => fetch(url).then((r) => r.json())))
+  const results = await Promise.all(ENDPOINTS[type].map((url) => fetch(`${BASE_URL}${url}`).then((r) => r.json())))
   return Object.fromEntries(DATA_KEYS[type].map((k, i) => [k, results[i]]))
 }
 
@@ -339,8 +340,8 @@ export default function Reports() {
   const [reportError, setReportError] = useState(null)
 
   useEffect(() => {
-    fetch('/api/reports').then((r) => r.json()).then(setData)
-    fetch('/api/listings/market-trends').then((r) => r.json()).then(setMarketTrends)
+    fetch(`${BASE_URL}/api/reports`).then((r) => r.json()).then(setData)
+    fetch(`${BASE_URL}/api/listings/market-trends`).then((r) => r.json()).then(setMarketTrends)
   }, [])
 
   async function generateReport() {
@@ -352,7 +353,7 @@ export default function Reports() {
       const allData = await fetchReportData(selectedType)
       const metrics = computeMetrics(selectedType, allData)
 
-      const res = await fetch('/api/ai', {
+      const res = await fetch(`${BASE_URL}/api/ai`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

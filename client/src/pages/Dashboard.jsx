@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from 'react'
 import AIPanel from '../components/AIPanel.jsx'
 import FilterBar from '../components/FilterBar.jsx'
 import TasksCard from '../components/TasksCard.jsx'
+import { BASE_URL } from '../lib/api.js'
 
 const MOCK_TODAY = '2026-03-14'
 
@@ -132,7 +133,7 @@ export default function Dashboard() {
   const [statusFilter, setStatusFilter] = useState('all')
 
   useEffect(() => {
-    fetch('/api/dashboard').then((r) => r.json()).then(setData)
+    fetch(`${BASE_URL}/api/dashboard`).then((r) => r.json()).then(setData)
   }, [])
 
   const filteredOrders = useMemo(() => {
